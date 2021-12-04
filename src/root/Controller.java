@@ -3,7 +3,8 @@ package root;
 public class Controller implements Runnable {
 
     private int status = 0;
-    private Object monitor = new Object();
+    private final Object monitor = new Object();
+
 
     @Override
     public void run() {
@@ -27,6 +28,7 @@ public class Controller implements Runnable {
             }
         }).start();
 
+
         new Thread(() -> {
             synchronized (monitor) {
                 int iterator = 0;
@@ -47,6 +49,7 @@ public class Controller implements Runnable {
             }
         }).start();
 
+
         new Thread(() -> {
             synchronized (monitor) {
                 int iterator = 0;
@@ -66,6 +69,7 @@ public class Controller implements Runnable {
                 }
             }
         }).start();
+
     }
 
 }
